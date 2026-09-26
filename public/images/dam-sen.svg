@@ -1,0 +1,98 @@
+<svg viewBox="0 0 1600 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fc4e3"/>
+      <stop offset=".55" stop-color="#f6d9c4"/>
+      <stop offset="1" stop-color="#fbe9d2"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fb7a4"/>
+      <stop offset=".5" stop-color="#2f8a73"/>
+      <stop offset="1" stop-color="#14503f"/>
+    </linearGradient>
+    <linearGradient id="petal" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#f7a6c1"/>
+      <stop offset=".6" stop-color="#f9c9da"/>
+      <stop offset="1" stop-color="#fff4f8"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff6d8" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#fff6d8" stop-opacity="0"/>
+    </radialGradient>
+
+    <g id="lotus">
+      <ellipse cx="0" cy="-30" rx="15" ry="32" fill="url(#petal)" transform="rotate(-62)"/>
+      <ellipse cx="0" cy="-30" rx="15" ry="32" fill="url(#petal)" transform="rotate(62)"/>
+      <ellipse cx="0" cy="-32" rx="16" ry="35" fill="url(#petal)" transform="rotate(-38)"/>
+      <ellipse cx="0" cy="-32" rx="16" ry="35" fill="url(#petal)" transform="rotate(38)"/>
+      <ellipse cx="0" cy="-34" rx="17" ry="38" fill="url(#petal)" stroke="#f2a3bd" stroke-width="1" transform="rotate(-16)"/>
+      <ellipse cx="0" cy="-34" rx="17" ry="38" fill="url(#petal)" stroke="#f2a3bd" stroke-width="1" transform="rotate(16)"/>
+      <ellipse cx="0" cy="-36" rx="16" ry="40" fill="url(#petal)" stroke="#f2a3bd" stroke-width="1"/>
+      <ellipse cx="0" cy="-8" rx="9" ry="5" fill="#f2c341"/>
+    </g>
+    <g id="bud">
+      <ellipse cx="0" cy="-22" rx="11" ry="26" fill="url(#petal)" stroke="#f2a3bd" stroke-width="1"/>
+      <ellipse cx="-5" cy="-20" rx="7" ry="22" fill="#f9c9da" transform="rotate(-14)"/>
+      <ellipse cx="5" cy="-20" rx="7" ry="22" fill="#f7b7cd" transform="rotate(14)"/>
+    </g>
+    <g id="pad">
+      <ellipse cx="0" cy="0" rx="62" ry="16" fill="#2d7a49"/>
+      <ellipse cx="0" cy="-2" rx="54" ry="12" fill="#3d9a5b"/>
+      <path d="M0 -2 L60 -12" stroke="#2d7a49" stroke-width="2"/>
+      <path d="M0 -2 L-40 -10 M0 -2 L-20 8 M0 -2 L30 8" stroke="#2a6f43" stroke-width="1.5" opacity=".6"/>
+    </g>
+  </defs>
+
+  <rect width="1600" height="700" fill="url(#sky)"/>
+  <circle cx="1180" cy="230" r="260" fill="url(#sun)"/>
+
+  <path d="M0 330 L0 270 Q60 235 120 262 Q180 215 250 258 Q320 232 380 268 Q470 225 540 262 Q620 238 700 270 Q790 220 870 262 Q960 236 1040 268 Q1130 226 1210 262 Q1290 238 1370 266 Q1460 226 1540 260 Q1580 248 1600 262 L1600 330Z" fill="#7aa58e" opacity=".55"/>
+  <path d="M0 330 L0 290 Q90 262 170 286 Q260 258 350 288 Q450 262 540 288 Q640 264 740 290 Q850 262 950 288 Q1050 264 1150 290 Q1260 262 1360 288 Q1470 264 1600 290 L1600 330Z" fill="#4f8a6a" opacity=".75"/>
+
+  <rect y="318" width="1600" height="382" fill="url(#water)"/>
+  <ellipse cx="1180" cy="350" rx="240" ry="14" fill="#fff6d8" opacity=".35"/>
+  <ellipse cx="800" cy="322" rx="900" ry="16" fill="#fff" opacity=".28"/>
+
+  <use href="#pad" transform="translate(120 360) scale(.5)"/>
+  <use href="#pad" transform="translate(330 352) scale(.45)"/>
+  <use href="#pad" transform="translate(540 366) scale(.5)"/>
+  <use href="#pad" transform="translate(760 356) scale(.45)"/>
+  <use href="#pad" transform="translate(980 364) scale(.5)"/>
+  <use href="#pad" transform="translate(1230 354) scale(.45)"/>
+  <use href="#pad" transform="translate(1450 366) scale(.5)"/>
+
+  <g stroke="#2a7a4a" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M250 372 V340"/><path d="M660 370 V336"/><path d="M1090 372 V338"/><path d="M1380 370 V334"/>
+  </g>
+  <use href="#lotus" transform="translate(250 342) scale(.5)"/>
+  <use href="#lotus" transform="translate(660 338) scale(.5)"/>
+  <use href="#lotus" transform="translate(1090 340) scale(.5)"/>
+  <use href="#bud" transform="translate(1380 336) scale(.5)"/>
+
+  <use href="#pad" transform="translate(70 470) scale(1.1)"/>
+  <use href="#pad" transform="translate(330 430) scale(.85)"/>
+  <use href="#pad" transform="translate(560 500) scale(1.25)"/>
+  <use href="#pad" transform="translate(830 440) scale(.9)"/>
+  <use href="#pad" transform="translate(1060 520) scale(1.3)"/>
+  <use href="#pad" transform="translate(1330 450) scale(1)"/>
+  <use href="#pad" transform="translate(1540 540) scale(1.2)"/>
+  <use href="#pad" transform="translate(220 590) scale(1.5)"/>
+  <use href="#pad" transform="translate(820 610) scale(1.6)"/>
+  <use href="#pad" transform="translate(1290 620) scale(1.4)"/>
+
+  <g stroke="#2a7a4a" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M190 470 V330"/><path d="M450 440 V300"/><path d="M700 500 V290"/>
+    <path d="M960 450 V305"/><path d="M1210 530 V300"/><path d="M1470 470 V318"/>
+    <path d="M40 520 V360"/><path d="M1580 560 V370"/>
+  </g>
+  <use href="#lotus" transform="translate(190 334) scale(1.1)"/>
+  <use href="#lotus" transform="translate(450 304) scale(.95)"/>
+  <use href="#lotus" transform="translate(700 294) scale(1.35)"/>
+  <use href="#bud" transform="translate(960 309) scale(1.1)"/>
+  <use href="#lotus" transform="translate(1210 304) scale(1.25)"/>
+  <use href="#lotus" transform="translate(1470 322) scale(1)"/>
+  <use href="#bud" transform="translate(40 364) scale(1.2)"/>
+  <use href="#lotus" transform="translate(1580 374) scale(1.1)"/>
+
+  <ellipse cx="800" cy="330" rx="800" ry="14" fill="#fff" opacity=".2"/>
+</svg>
