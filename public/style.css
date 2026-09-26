@@ -156,47 +156,42 @@ h2 {
 .tags button:hover { background: var(--primary-dark); transform: translateY(-2px); }
 .tags button:focus-visible { outline: 3px solid #7dbbe8; outline-offset: 2px; }
 
-#info-modal {
-  border: none;
-  border-radius: 16px;
-  padding: 0;
-  width: min(440px, calc(100% - 32px));
-  margin: auto;
+#info-popover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: min(320px, calc(100vw - 16px));
+  background: #fff;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(8, 76, 128, 0.35);
+  box-shadow: 0 16px 48px rgba(8, 76, 128, 0.35);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
 }
-#info-modal::backdrop { background: rgba(8, 40, 70, 0.6); }
-#info-modal[open] { animation: pop 0.2s ease-out; }
+#info-popover[hidden] { display: none; }
+#info-popover:not([hidden]) { animation: pop 0.15s ease-out; }
 @keyframes pop {
-  from { opacity: 0; transform: scale(0.94); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-#info-modal img {
+#info-popover img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   background: #fdf3e3;
+  flex: 0 1 auto;
+  min-height: 0;
 }
-.modal-body { padding: 20px 24px 26px; }
-.modal-body h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 8px; }
-
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--primary-dark);
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
+.popover-body {
+  flex: 0 0 auto;
+  padding: 14px 18px 18px;
 }
-.modal-close:hover { background: #fff; }
+.popover-body h3 { color: var(--primary); font-size: 1.2rem; margin-bottom: 6px; }
+.popover-body p { font-size: 0.92rem; line-height: 1.55; }
 
 footer {
   margin-top: 56px;

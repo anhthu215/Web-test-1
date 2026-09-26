@@ -75,8 +75,8 @@ const stats = {
   'dan-so': {
     name: 'Dân số ~100 triệu người',
     img: '/images/dan-so.jpg',
-    pos: 'center 15%',
-    desc: 'Việt Nam thuộc nhóm các nước đông dân nhất thế giới và đứng thứ ba Đông Nam Á. Người Việt yêu quý áo dài, trang phục truyền thống thanh lịch thể hiện nét đẹp dịu dàng của phụ nữ Việt.',
+    pos: 'center 20%',
+    desc: 'Việt Nam thuộc nhóm các nước đông dân nhất thế giới và đứng thứ ba Đông Nam Á. Gia đình nhiều thế hệ sum vầy là nét đẹp văn hóa của người Việt, thường cùng diện áo dài, áo ngũ thân trong những dịp lễ Tết.',
   },
   'dan-toc': {
     name: '54 dân tộc anh em',
@@ -86,14 +86,41 @@ const stats = {
   },
 };
 
-const modal = document.getElementById('info-modal');
+const popover = document.getElementById('info-popover');
 const imgEl = document.getElementById('info-img');
 const titleEl = document.getElementById('info-title');
 const descEl = document.getElementById('info-desc');
 
-let pendingItem = null;
+let activeBtn = null;
+let lastPointerType = 'mouse';
 
-function showInfo(item) {
+function getItem(btn) {
+  return dishes[btn.dataset.dish] || places[btn.dataset.place] || stats[btn.dataset.stat];
+}
+
+function positionPopover() {
+  if (!activeBtn) return;
+  const gap = 10;
+  const margin = 8;
+  const minRoom = 140;
+  const topLimit = document.querySelector('.site-header').offsetHeight + margin;
+  const rect = activeBtn.getBoundingClientRect();
+  popover.style.maxHeight = '';
+  const { width, height } = popover.getBoundingClientRect();
+  const spaceAbove = rect.top - gap - topLimit;
+  const spaceBelow = window.innerHeight - rect.bottom - gap - margin;
+  const above = spaceAbove >= minRoom || spaceAbove >= spaceBelow;
+  const room = Math.max(above ? spaceAbove : spaceBelow, 0);
+  if (height > room) popover.style.maxHeight = `${room}px`;
+  const shownHeight = Math.min(height, room);
+  const top = above ? rect.top - gap - shownHeight : rect.bottom + gap;
+  let left = rect.left + rect.width / 2 - width / 2;
+  left = Math.min(Math.max(margin, left), window.innerWidth - width - margin);
+  popover.style.top = `${top}px`;
+  popover.style.left = `${left}px`;
+}
+
+function fillPopover(item) {
   imgEl.src = item.img;
   imgEl.alt = `Hình ảnh ${item.name}`;
   imgEl.style.objectFit = item.fit || '';
@@ -101,18 +128,29 @@ function showInfo(item) {
   imgEl.style.background = item.bg || '';
   titleEl.textContent = item.name;
   descEl.textContent = item.desc;
-  if (!modal.open) modal.showModal();
 }
 
-function openInfo(item) {
-  pendingItem = item;
+function showInfo(btn) {
+  if (activeBtn && activeBtn !== btn) activeBtn.removeAttribute('aria-describedby');
+  activeBtn = btn;
+  const item = getItem(btn);
   const preload = new Image();
   const done = () => {
-    if (pendingItem === item) showInfo(item);
+    if (activeBtn !== btn) return;
+    fillPopover(item);
+    popover.hidden = false;
+    btn.setAttribute('aria-describedby', 'info-popover');
+    positionPopover();
   };
   preload.onload = done;
   preload.onerror = done;
   preload.src = item.img;
+}
+
+function hideInfo() {
+  if (activeBtn) activeBtn.removeAttribute('aria-describedby');
+  activeBtn = null;
+  popover.hidden = true;
 }
 
 window.addEventListener('load', () => {
@@ -123,20 +161,24 @@ window.addEventListener('load', () => {
   });
 });
 
-document.querySelectorAll('[data-dish]').forEach((btn) => {
-  btn.addEventListener('click', () => openInfo(dishes[btn.dataset.dish]));
+document.querySelectorAll('[data-dish], [data-place], [data-stat]').forEach((btn) => {
+  btn.addEventListener('pointerdown', (e) => { lastPointerType = e.pointerType; });
+  btn.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') showInfo(btn); });
+  btn.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') hideInfo(); });
+  btn.addEventListener('focus', () => { if (btn.matches(':focus-visible')) showInfo(btn); });
+  btn.addEventListener('blur', hideInfo);
+  btn.addEventListener('click', () => {
+    if (lastPointerType === 'mouse') return;
+    if (activeBtn === btn) hideInfo();
+    else showInfo(btn);
+  });
 });
 
-document.querySelectorAll('[data-place]').forEach((btn) => {
-  btn.addEventListener('click', () => openInfo(places[btn.dataset.place]));
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('[data-dish], [data-place], [data-stat]')) hideInfo();
 });
-
-document.querySelectorAll('[data-stat]').forEach((btn) => {
-  btn.addEventListener('click', () => openInfo(stats[btn.dataset.stat]));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') hideInfo();
 });
-
-modal.querySelector('.modal-close').addEventListener('click', () => modal.close());
-
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) modal.close();
-});
+window.addEventListener('scroll', positionPopover, { passive: true });
+window.addEventListener('resize', positionPopover);
