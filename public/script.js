@@ -91,7 +91,9 @@ const imgEl = document.getElementById('info-img');
 const titleEl = document.getElementById('info-title');
 const descEl = document.getElementById('info-desc');
 
-function openInfo(item) {
+let pendingItem = null;
+
+function showInfo(item) {
   imgEl.src = item.img;
   imgEl.alt = `Hình ảnh ${item.name}`;
   imgEl.style.objectFit = item.fit || '';
@@ -99,8 +101,27 @@ function openInfo(item) {
   imgEl.style.background = item.bg || '';
   titleEl.textContent = item.name;
   descEl.textContent = item.desc;
-  modal.showModal();
+  if (!modal.open) modal.showModal();
 }
+
+function openInfo(item) {
+  pendingItem = item;
+  const preload = new Image();
+  const done = () => {
+    if (pendingItem === item) showInfo(item);
+  };
+  preload.onload = done;
+  preload.onerror = done;
+  preload.src = item.img;
+}
+
+window.addEventListener('load', () => {
+  [dishes, places, stats].forEach((group) => {
+    Object.values(group).forEach((item) => {
+      new Image().src = item.img;
+    });
+  });
+});
 
 document.querySelectorAll('[data-dish]').forEach((btn) => {
   btn.addEventListener('click', () => openInfo(dishes[btn.dataset.dish]));
