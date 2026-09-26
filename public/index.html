@@ -29,10 +29,10 @@
     <section id="tong-quan">
       <h2>Tổng quan</h2>
       <div class="stats">
-        <div class="stat"><strong>Hà Nội</strong><span>Thủ đô</span></div>
-        <div class="stat"><strong>~331.000 km²</strong><span>Diện tích</span></div>
-        <div class="stat"><strong>~100 triệu</strong><span>Dân số</span></div>
-        <div class="stat"><strong>54</strong><span>Dân tộc</span></div>
+        <button type="button" class="stat" data-stat="ha-noi"><strong>Hà Nội</strong><span>Thủ đô</span></button>
+        <button type="button" class="stat" data-stat="dien-tich"><strong>~331.000 km²</strong><span>Diện tích</span></button>
+        <button type="button" class="stat" data-stat="dan-so"><strong>~100 triệu</strong><span>Dân số</span></button>
+        <button type="button" class="stat" data-stat="dan-toc"><strong>54</strong><span>Dân tộc</span></button>
       </div>
       <p>
         Việt Nam nằm ở phía đông bán đảo Đông Dương, thuộc khu vực Đông Nam Á, với đường bờ biển dài hơn 3.260 km.
@@ -44,22 +44,22 @@
     <section id="dia-danh">
       <h2>Địa danh nổi tiếng</h2>
       <div class="cards">
-        <article class="card">
-          <h3>Vịnh Hạ Long</h3>
-          <p>Di sản thiên nhiên thế giới với hàng nghìn đảo đá vôi nhô lên giữa làn nước xanh ngọc bích.</p>
-        </article>
-        <article class="card">
-          <h3>Phố cổ Hội An</h3>
-          <p>Đô thị cổ rực rỡ đèn lồng, nơi giao thoa văn hóa Việt, Nhật và Hoa từ nhiều thế kỷ trước.</p>
-        </article>
-        <article class="card">
-          <h3>Sa Pa</h3>
-          <p>Thị trấn trong sương với ruộng bậc thang trải dài và bản làng của đồng bào dân tộc thiểu số.</p>
-        </article>
-        <article class="card">
-          <h3>Đồng bằng sông Cửu Long</h3>
-          <p>Vùng sông nước với chợ nổi, vườn trái cây và những cánh đồng lúa bát ngát.</p>
-        </article>
+        <button type="button" class="card" data-place="ha-long">
+          <span class="card-title">Vịnh Hạ Long</span>
+          <span>Di sản thiên nhiên thế giới với hàng nghìn đảo đá vôi nhô lên giữa làn nước xanh ngọc bích.</span>
+        </button>
+        <button type="button" class="card" data-place="hoi-an">
+          <span class="card-title">Phố cổ Hội An</span>
+          <span>Đô thị cổ rực rỡ đèn lồng, nơi giao thoa văn hóa Việt, Nhật và Hoa từ nhiều thế kỷ trước.</span>
+        </button>
+        <button type="button" class="card" data-place="sa-pa">
+          <span class="card-title">Sa Pa</span>
+          <span>Thị trấn trong sương với ruộng bậc thang trải dài và bản làng của đồng bào dân tộc thiểu số.</span>
+        </button>
+        <button type="button" class="card" data-place="mekong">
+          <span class="card-title">Đồng bằng sông Cửu Long</span>
+          <span>Vùng sông nước với chợ nổi, vườn trái cây và những cánh đồng lúa bát ngát.</span>
+        </button>
       </div>
     </section>
 
@@ -94,12 +94,12 @@
     <p>&copy; 2026 — Website giới thiệu Việt Nam</p>
   </footer>
 
-  <dialog id="dish-modal" aria-labelledby="dish-title">
+  <dialog id="info-modal" aria-labelledby="info-title">
     <button type="button" class="modal-close" aria-label="Đóng">&times;</button>
-    <img id="dish-img" src="" alt="">
+    <img id="info-img" src="" alt="">
     <div class="modal-body">
-      <h3 id="dish-title"></h3>
-      <p id="dish-desc"></p>
+      <h3 id="info-title"></h3>
+      <p id="info-desc"></p>
     </div>
   </dialog>
 
