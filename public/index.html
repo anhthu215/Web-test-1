@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giới thiệu Việt Nam</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <a class="brand" href="#top">Việt Nam</a>
+      <ul>
+        <li><a href="#tong-quan">Tổng quan</a></li>
+        <li><a href="#dia-danh">Địa danh</a></li>
+        <li><a href="#van-hoa">Văn hóa</a></li>
+        <li><a href="#am-thuc">Ẩm thực</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <h1>Chào mừng đến với Việt Nam</h1>
+    <p>Đất nước hình chữ S bên bờ Biển Đông — nơi có non nước hữu tình, văn hóa lâu đời và con người thân thiện.</p>
+    <a class="btn" href="#tong-quan">Khám phá ngay</a>
+  </section>
+
+  <main>
+    <section id="tong-quan">
+      <h2>Tổng quan</h2>
+      <div class="stats">
+        <div class="stat"><strong>Hà Nội</strong><span>Thủ đô</span></div>
+        <div class="stat"><strong>~331.000 km²</strong><span>Diện tích</span></div>
+        <div class="stat"><strong>~100 triệu</strong><span>Dân số</span></div>
+        <div class="stat"><strong>54</strong><span>Dân tộc</span></div>
+      </div>
+      <p>
+        Việt Nam nằm ở phía đông bán đảo Đông Dương, thuộc khu vực Đông Nam Á, với đường bờ biển dài hơn 3.260 km.
+        Đất nước có địa hình đa dạng từ núi non hùng vĩ ở phía Bắc, cao nguyên miền Trung đến đồng bằng sông Cửu Long
+        màu mỡ ở phía Nam. Ngôn ngữ chính thức là tiếng Việt, đơn vị tiền tệ là đồng (VND).
+      </p>
+    </section>
+
+    <section id="dia-danh">
+      <h2>Địa danh nổi tiếng</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Vịnh Hạ Long</h3>
+          <p>Di sản thiên nhiên thế giới với hàng nghìn đảo đá vôi nhô lên giữa làn nước xanh ngọc bích.</p>
+        </article>
+        <article class="card">
+          <h3>Phố cổ Hội An</h3>
+          <p>Đô thị cổ rực rỡ đèn lồng, nơi giao thoa văn hóa Việt, Nhật và Hoa từ nhiều thế kỷ trước.</p>
+        </article>
+        <article class="card">
+          <h3>Sa Pa</h3>
+          <p>Thị trấn trong sương với ruộng bậc thang trải dài và bản làng của đồng bào dân tộc thiểu số.</p>
+        </article>
+        <article class="card">
+          <h3>Đồng bằng sông Cửu Long</h3>
+          <p>Vùng sông nước với chợ nổi, vườn trái cây và những cánh đồng lúa bát ngát.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="van-hoa">
+      <h2>Văn hóa</h2>
+      <p>
+        Với hơn 4.000 năm lịch sử, Việt Nam sở hữu kho tàng văn hóa phong phú: áo dài truyền thống, nhã nhạc cung đình Huế,
+        múa rối nước, quan họ Bắc Ninh, cùng những lễ hội như Tết Nguyên Đán, Tết Trung Thu và lễ hội Chùa Hương.
+        Tinh thần đoàn kết, hiếu học và lòng hiếu khách là những nét đẹp được người Việt gìn giữ qua nhiều thế hệ.
+      </p>
+    </section>
+
+    <section id="am-thuc">
+      <h2>Ẩm thực</h2>
+      <ul class="tags">
+        <li><button type="button" data-dish="pho">Phở</button></li>
+        <li><button type="button" data-dish="bun-cha">Bún chả</button></li>
+        <li><button type="button" data-dish="banh-mi">Bánh mì</button></li>
+        <li><button type="button" data-dish="goi-cuon">Gỏi cuốn</button></li>
+        <li><button type="button" data-dish="cao-lau">Cao lầu</button></li>
+        <li><button type="button" data-dish="com-tam">Cơm tấm</button></li>
+        <li><button type="button" data-dish="ca-phe">Cà phê sữa đá</button></li>
+      </ul>
+      <p>
+        Ẩm thực Việt Nam nổi tiếng với sự cân bằng giữa các vị chua, cay, mặn, ngọt, cùng nhiều rau thơm tươi
+        và nước mắm đặc trưng. Mỗi vùng miền lại có những món ăn mang đậm hương vị riêng.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 — Website giới thiệu Việt Nam</p>
+  </footer>
+
+  <dialog id="dish-modal" aria-labelledby="dish-title">
+    <button type="button" class="modal-close" aria-label="Đóng">&times;</button>
+    <img id="dish-img" src="" alt="">
+    <div class="modal-body">
+      <h3 id="dish-title"></h3>
+      <p id="dish-desc"></p>
+    </div>
+  </dialog>
+
+  <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+:root {
+  --primary: #0b6fb8;
+  --primary-dark: #084c80;
+  --primary-light: #e6f2fb;
+  --text: #16324a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.7;
+  background: #fff;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--primary-dark);
+}
+
+.site-header nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.brand {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-header ul { display: flex; gap: 20px; list-style: none; }
+.site-header ul a { color: #cfe6f7; text-decoration: none; }
+.site-header ul a:hover { color: #fff; }
+
+.hero {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 { font-size: 2.6rem; margin-bottom: 16px; }
+.hero p { max-width: 640px; margin: 0 auto 28px; font-size: 1.15rem; color: #e3f1fb; }
+
+.btn {
+  display: inline-block;
+  background: #fff;
+  color: var(--primary-dark);
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+
+main { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+main section { padding: 56px 0 8px; }
+
+h2 {
+  color: var(--primary);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--primary-light);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat {
+  background: var(--primary-light);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.stat strong { display: block; font-size: 1.4rem; color: var(--primary-dark); }
+.stat span { font-size: 0.95rem; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #cfe3f3;
+  border-top: 4px solid var(--primary);
+  border-radius: 10px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(11, 111, 184, 0.08);
+}
+.card h3 { color: var(--primary-dark); margin-bottom: 8px; }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin-bottom: 20px;
+}
+.tags button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.tags button:hover { background: var(--primary-dark); transform: translateY(-2px); }
+.tags button:focus-visible { outline: 3px solid #7dbbe8; outline-offset: 2px; }
+
+#dish-modal {
+  border: none;
+  border-radius: 16px;
+  padding: 0;
+  width: min(440px, calc(100% - 32px));
+  margin: auto;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(8, 76, 128, 0.35);
+}
+#dish-modal::backdrop { background: rgba(8, 40, 70, 0.6); }
+#dish-modal[open] { animation: pop 0.2s ease-out; }
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#dish-modal img { display: block; width: 100%; height: auto; background: #fdf3e3; }
+.modal-body { padding: 20px 24px 26px; }
+.modal-body h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 8px; }
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary-dark);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal-close:hover { background: #fff; }
+
+footer {
+  margin-top: 56px;
+  background: var(--primary-dark);
+  color: #cfe6f7;
+  text-align: center;
+  padding: 24px 20px;
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2rem; }
+  .hero { padding: 64px 20px; }
+}

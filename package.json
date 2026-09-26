@@ -1,0 +1,10 @@
+{
+  "name": "gioi-thieu-viet-nam",
+  "version": "1.0.0",
+  "description": "Website đơn giản giới thiệu về Việt Nam",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT"
+}
